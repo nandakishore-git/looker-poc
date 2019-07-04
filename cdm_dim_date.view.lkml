@@ -197,6 +197,7 @@ view: cdm_dim_date {
 
   dimension: calendar_year {
     type: number
+    drill_fields: [calendar_qtr,calendar_month_name]
     sql: ${TABLE}.CALENDAR_YEAR ;;
   }
 
