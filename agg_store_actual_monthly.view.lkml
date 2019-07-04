@@ -30,16 +30,6 @@ view: agg_store_actual_monthly {
     sql: ${TABLE}.ACTUAL_DEPARTURE_PAX_LP ;;
   }
 
-  dimension: actual_income_cp {
-    type: number
-    sql: ${TABLE}.ACTUAL_INCOME_CP ;;
-  }
-
-  dimension: actual_income_lp {
-    type: number
-    sql: ${TABLE}.ACTUAL_INCOME_LP ;;
-  }
-
   dimension: actual_trans_count_cp {
     type: number
     sql: ${TABLE}.ACTUAL_TRANS_COUNT_CP ;;
@@ -255,6 +245,24 @@ view: agg_store_actual_monthly {
    ##   field: cdm_dim_date_dwk
     ##  value: "2019^%"
     ##}
+  }
+
+  measure: actual_income_cp {
+    type: sum
+    value_format: "0.00,,\" M\""
+    sql: ${TABLE}.ACTUAL_INCOME_CP ;;
+  }
+
+  measure: actual_income_lp {
+    type: sum
+    value_format: "0.00,,\" M\""
+    sql: ${TABLE}.ACTUAL_INCOME_LP ;;
+  }
+
+  measure: actual_income_var {
+    type: sum
+    value_format: "0.00,,\" M\""
+    sql: ${TABLE}.actual_income_cp - ${TABLE}.actual_income_lp  ;;
   }
 
   measure: budget_sales_lp {
