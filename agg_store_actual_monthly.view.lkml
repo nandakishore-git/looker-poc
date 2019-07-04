@@ -5,7 +5,8 @@ view: agg_store_actual_monthly {
   set: Drill_fields {
     fields: [
       cdm_dim_date.calendar_year,
-      store_name
+      store_name,
+      actual_sales_cp
     ]
   }
 
