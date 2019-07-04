@@ -20,25 +20,9 @@ view: agg_store_actual_monthly {
     sql: ${TABLE}.ACTUAL_ARRIVAL_PAX_LP ;;
   }
 
-  dimension: actual_departure_pax_cp {
-    type: number
-    sql: ${TABLE}.ACTUAL_DEPARTURE_PAX_CP ;;
-  }
 
-  dimension: actual_departure_pax_lp {
-    type: number
-    sql: ${TABLE}.ACTUAL_DEPARTURE_PAX_LP ;;
-  }
 
-  dimension: actual_trans_count_cp {
-    type: number
-    sql: ${TABLE}.ACTUAL_TRANS_COUNT_CP ;;
-  }
 
-  dimension: actual_trans_count_lp {
-    type: number
-    sql: ${TABLE}.ACTUAL_TRANS_COUNT_LP ;;
-  }
 
   dimension: agg_store_actual_monthly_dwk {
     type: number
@@ -269,6 +253,30 @@ view: agg_store_actual_monthly {
     type: sum
     value_format: "0.00,,\" M\""
     sql: ${TABLE}.BUDGET_SALES_LP ;;
+  }
+
+  measure: actual_departure_pax_cp {
+    type: sum
+    value_format: "0.00,,\" K\""
+    sql: ${TABLE}.ACTUAL_DEPARTURE_PAX_CP ;;
+  }
+
+  measure: actual_departure_pax_lp {
+    type: sum
+    value_format: "0.00,,\" K\""
+    sql: ${TABLE}.ACTUAL_DEPARTURE_PAX_LP ;;
+  }
+
+  measure: actual_trans_count_cp {
+    type: sum
+    value_format: "0.00,,\" K\""
+    sql: ${TABLE}.ACTUAL_TRANS_COUNT_CP ;;
+  }
+
+  measure: actual_trans_count_lp {
+    type: sum
+    value_format: "0.00,,\" K\""
+    sql: ${TABLE}.ACTUAL_TRANS_COUNT_LP ;;
   }
 
   measure: count {
