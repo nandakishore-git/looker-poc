@@ -2,11 +2,28 @@ view: agg_store_actual_monthly {
   sql_table_name: etl_data_mart.agg_store_actual_monthly ;;
   ##sql_table_name: etl_data_mart.dim_store ;;
 
-  set: Drill_fields {
+  set: Sales_KPI_drill {
     fields: [
       cdm_dim_date.calendar_year,
-      store_name,
-      actual_sales_cp
+      actual_sales_cp,
+      actual_sales_lp
+    ]
+  }
+
+  set: PAX_KPI_drill {
+    fields: [
+      cdm_dim_date.calendar_year,
+      actual_departure_pax_cp,
+      actual_departure_pax_lp
+    ]
+  }
+
+  set: trans_KPI_drill {
+    fields: [
+      cdm_dim_date.calendar_year,
+      cdm_dim_date.calendar_qtr,
+      actual_trans_count_cp,
+      actual_trans_count_lp
     ]
   }
 
@@ -205,7 +222,7 @@ view: agg_store_actual_monthly {
   measure: actual_sales_cp {
     type: sum
     value_format: "0.00,,\" M\""
-    drill_fields: [Drill_fields*]#[store_name,cdm_dim_date_dwk]
+    drill_fields: [Sales_KPI_drill*]#[store_name,cdm_dim_date_dwk]
     sql: ${TABLE}.ACTUAL_SALES_CP ;;
   }
 
@@ -258,6 +275,7 @@ view: agg_store_actual_monthly {
   measure: actual_departure_pax_cp {
     type: sum
     value_format: "0.00,,\" K\""
+    drill_fields: [PAX_KPI_drill*]
     sql: ${TABLE}.ACTUAL_DEPARTURE_PAX_CP ;;
   }
 
@@ -270,6 +288,7 @@ view: agg_store_actual_monthly {
   measure: actual_trans_count_cp {
     type: sum
     value_format: "0.00,,\" K\""
+    drill_fields: [trans_KPI_drill*]
     sql: ${TABLE}.ACTUAL_TRANS_COUNT_CP ;;
   }
 
