@@ -222,7 +222,7 @@ view: agg_store_actual_monthly {
   measure: actual_sales_cp {
     type: sum
     value_format: "0.00,,\" M\""
-    ##drill_fields: [dim_store_dwk]
+    drill_fields: [store_name,cdm_dim_date_dwk]
     sql: ${TABLE}.ACTUAL_SALES_CP ;;
   }
 

@@ -91,6 +91,7 @@ view: cdm_dim_date {
 
   dimension: calendar_qtr {
     type: string
+    drill_fields: [calendar_month_name]
     sql: ${TABLE}.CALENDAR_QTR ;;
   }
 

@@ -171,6 +171,7 @@ view: dim_store {
 
   dimension: store_category {
     type: string
+    drill_fields: [store_display_name]
     sql: ${TABLE}.STORE_CATEGORY ;;
   }
 
@@ -205,6 +206,7 @@ view: dim_store {
 
   dimension: zone {
     type: string
+    drill_fields: [store_category,store_display_name,store_code]
     sql: ${TABLE}.ZONE ;;
   }
 
