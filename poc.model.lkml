@@ -33,6 +33,11 @@ explore: agg_store_actual_monthly {
     sql_on: ${agg_store_actual_monthly.dim_store_dwk}=${dim_store.dim_store_dwk};;
     ##sql_foreign_key: ${agg_store_actual_monthly.cdm_dim_date_dwk}=${dim_store.cdm_dim_customer_dwk} ;;
   }
+  join: cdm_dim_date {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${agg_store_actual_monthly.cdm_dim_date_dwk}=${cdm_dim_date.cdm_dim_date_dwk};;
+  }
 }
 
 explore: agg_store_daily {}
