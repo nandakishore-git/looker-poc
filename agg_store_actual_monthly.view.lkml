@@ -1,5 +1,13 @@
 view: agg_store_actual_monthly {
   sql_table_name: etl_data_mart.agg_store_actual_monthly ;;
+  ##sql_table_name: etl_data_mart.dim_store ;;
+
+  set: Drill_fields {
+    fields: [
+      cdm_dim_date.calendar_year,
+      store_name
+    ]
+  }
 
   dimension: actual_arrival_pax_cp {
     type: number
@@ -222,7 +230,7 @@ view: agg_store_actual_monthly {
   measure: actual_sales_cp {
     type: sum
     value_format: "0.00,,\" M\""
-    drill_fields: [store_name,cdm_dim_date_dwk]
+    drill_fields: [Drill_fields*]#[store_name,cdm_dim_date_dwk]
     sql: ${TABLE}.ACTUAL_SALES_CP ;;
   }
 
