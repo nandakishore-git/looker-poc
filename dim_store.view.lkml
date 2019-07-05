@@ -206,7 +206,7 @@ view: dim_store {
 
   dimension: zone {
     type: string
-    drill_fields: [store_category,store_display_name,store_code]
+    drill_fields: [store_category,store_display_name,location]
     sql: ${TABLE}.ZONE ;;
   }
 
